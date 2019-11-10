@@ -4,6 +4,7 @@ import Login from "./Login.page";
 import Home from "./Home.page";
 import { UserProvider } from "./User.context";
 import ConnectedUser from "./ConnectedUser.route";
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           </ConnectedUser>
         </Switch>
       </Router>
+      <GlobalStyles />
     </UserProvider>
   );
 }
