@@ -2,5 +2,21 @@
   "name": "skup_client",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "react": "^0.0.0-experimental-38dd17ab9",
+    "react-dom": "^0.0.0-experimental-38dd17ab9",
+    "react-relay": "^0.0.0-experimental-a1a40b68",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.2",
+    "parcel-bundler": "^1.12.4"
+  }
 }
