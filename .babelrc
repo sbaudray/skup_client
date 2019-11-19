@@ -1,5 +1,8 @@
 {
   "plugins": [
-    "styled-jsx/babel"
+    "relay",
+    "styled-jsx/babel",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

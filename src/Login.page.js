@@ -6,24 +6,26 @@ import LabeledInput from "./LabeledInput.ui";
 function Login() {
   const user = useUserState();
   const userDispatch = useUserDispatch();
+  const [googleLoggedIn, setGoogleLoggedIn] = React.useState(false);
 
-  if (user.loggedIn) {
-    return <Redirect to="/home" />;
-  }
+  React.useEffect(() => {
+    window.onSignIn = function onSignIn(user) {
+      if (user) {
+        setGoogleLoggedIn(true);
+        userDispatch({ type: "LOGGED_IN", name: "HK" });
+      }
 
-  function login(event) {
-    event.preventDefault();
+      const id_token = user.getAuthResponse().id_token;
+    };
+  }, []);
 
-    userDispatch({ type: "LOGGED_IN", name: "HK" });
+  if (user.loggedIn || googleLoggedIn) {
+    return <Redirect to="/" />;
   }
 
   return (
     <div className="root">
-      <form className="form" onSubmit={login}>
-        <LabeledInput label="Email:" type="email" />
-        <LabeledInput label="Password:" type="password" />
-        <button>Login</button>
-      </form>
+      <div className="g-signin2" data-onsuccess="onSignIn" />
       <style jsx>
         {`
           .root {
@@ -31,14 +33,6 @@ function Login() {
             display: flex;
             height: 100%;
             justify-content: center;
-          }
-
-          .form {
-            border-radius: 4px;
-            box-shadow: 0 0 15px -2px lightgrey;
-            display: grid;
-            gap: 20px;
-            padding: 80px 40px;
           }
         `}
       </style>

@@ -4,6 +4,7 @@ import { useUserState } from "./User.context";
 
 function ConnectedUser({ children, ...rest }) {
   const user = useUserState();
+  console.log({ user });
 
   return (
     <Route

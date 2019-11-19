@@ -4,21 +4,31 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "rm -rf ./dist && parcel build index.html --public-url /"
+    "build": "rm -rf ./dist && yarn run relay && yarn run parcel:build",
+    "parcel:build": "parcel build index.html --public-url /",
+    "parcel:serve": "parcel index.html",
+    "relay": "yarn run relay-compiler --schema schema.graphql --src ./src/ --watchman false $@",
+    "start": "yarn run relay && yarn run parcel:serve"
   },
   "dependencies": {
     "react": "^0.0.0-experimental-38dd17ab9",
     "react-dom": "^0.0.0-experimental-38dd17ab9",
     "react-relay": "^0.0.0-experimental-a1a40b68",
     "react-router-dom": "^5.1.2",
+    "relay-runtime": "^7.1.0",
     "styled-jsx": "^3.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.2",
-    "parcel-bundler": "^1.12.4"
+    "babel-plugin-relay": "^7.1.0",
+    "get-graphql-schema": "^2.1.2",
+    "graphql": "^14.5.8",
+    "parcel-bundler": "^1.12.4",
+    "relay-compiler": "^7.1.0"
   }
 }

@@ -1,0 +1,14 @@
+schema {
+  query: RootQueryType
+}
+
+type Quote {
+  author: String!
+  content: String!
+  id: ID!
+}
+
+type RootQueryType {
+  allQuotes: [Quote!]!
+}
+
